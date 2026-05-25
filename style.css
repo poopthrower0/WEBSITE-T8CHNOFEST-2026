@@ -1,0 +1,756 @@
+:root {
+    /* ==========================================================================
+       1. GLOBAL COLOR PALETTE
+       ========================================================================== */
+    --bg-main: #0C0C0C;
+    --bg-tablet-screen: #E0E0E0;
+    --text-primary: #FFFFFF;
+    --text-dark: #0C0C0C;
+    --text-muted: rgba(255, 255, 255, 1);
+
+    /* ==========================================================================
+       2. TYPOGRAPHY (FONT SIZES)
+       ========================================================================== */
+    --font-hero-title: clamp(8rem, 14vw, 12rem);
+    --text-standard: clamp(1.1rem, 1.8vw, 1.35rem);
+    --text-rich-h2: clamp(1.4rem, 2.5vw, 2.2rem);
+    --text-rich-h3: clamp(1.1rem, 1.8vw, 1.4rem);   
+    --text-rich-body: clamp(0.95rem, 1.3vw, 1.1rem);
+
+    /* ==========================================================================
+       3. UNIFIED STYLE TOKENS
+       ========================================================================== */
+    --btn-border-radius: 16px;
+    --pill-border-radius: 9999px;
+    --btn-font-weight: 700;
+
+    /* ==========================================================================
+       4. INNER COMPONENT SPACING (PADDINGS)
+       ========================================================================== */
+    --spacing-topbar-padding: 15px 20px;
+    --spacing-btn-padding: clamp(12px, 1.3vw, 16px) clamp(20px, 2.5vw, 36px);
+    --spacing-hero-top-padding: max(80px, 8vw);
+    --spacing-hero-content-padding: 0 clamp(15px, 3vw, 30px);
+    --spacing-pane-padding: clamp(20px, 4vw, 50px);
+    --spacing-toggle-padding: 10px;
+    --spacing-tablet-screen-padding: 24px;
+
+    /* ==========================================================================
+       5. ELEMENT DISTRIBUTION & STRUCTURE (GAPS & MARGINS)
+       ========================================================================== */
+    --gap-topbar-cluster: 35px;
+    --gap-topbar-links: 30px;
+    --gap-hero-actions: 16px;
+    --gap-toggle-tabs: 8px;
+    --gap-tablet-screen-elements: 24px;
+
+    --margin-zero: 0;
+    --margin-hero-title-bottom: 15px;
+    --margin-rich-h3-bottom: 10px;
+    --margin-rich-hr-vertical: 25px;
+    --margin-rich-li-bottom: 8px;
+    --list-padding-left: 20px;
+
+    /* ==========================================================================
+       6. ANIMATION TIMINGS
+       ========================================================================== */
+    --delay-topbar: 0.3s;
+    --delay-first-tablet: 0.6s;
+
+    /* ==========================================================================
+       7. GLASS EFFECT DESIGN TOKENS
+       ========================================================================== */
+    --glass-text-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.02) 100%);
+    --glass-stroke-emulation: drop-shadow(0px -1px 0px rgba(255, 255, 255, 0.6)) drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.25)) drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.55));
+}
+
+body,
+html {
+    margin: var(--margin-zero);
+    padding: var(--margin-zero);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    box-sizing: border-box;
+    background: rgba(34, 34, 34, var(--bg-opacity, 0));
+    backdrop-filter: blur(calc(10px * var(--bg-opacity, 0)));
+    padding: var(--spacing-topbar-padding);
+    gap: var(--gap-topbar-cluster);
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.topbar.reveal {
+    animation: dramaticHeroFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay-topbar);
+}
+
+.topbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-topbar-links);
+}
+
+.topbar a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    font-size: var(--text-standard);
+}
+
+.topbar a:hover {
+    opacity: 0.8;
+}
+
+.topbar-logo-left img,
+.topbar-logo-right img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+.fixed-background-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8vw;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.main-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.page1 {
+    width: 100%;
+    height: 56.25vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, #0C0C0C 0%, #003362 100%);
+}
+
+@media (max-width: 768px) {
+    .page1 {
+        height: 120vw;
+    }
+}
+
+@media (max-width: 456px) {
+    .page1 {
+        height: 150vw;
+    }
+}
+
+@media (max-width: 338px) {
+    .page1 {
+        height: 180vw;
+    }
+}
+
+.fixed-hero {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    padding: var(--spacing-hero-top-padding) var(--spacing-hero-content-padding) 0;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    gap: var(--gap-hero-actions);
+}
+
+@keyframes dramaticHeroFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dramaticTabletFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: var(--text-standard);
+    font-weight: var(--btn-font-weight);
+    border-radius: var(--btn-border-radius);
+    padding: var(--spacing-btn-padding);
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.hero-title.reveal,
+.hero-subtitle.reveal,
+.hero-actions.reveal,
+.topbar-logo-lettermark.reveal {
+    animation: dramaticHeroFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   PRIMARY BUTTON INTEGRATION WITH RUNNING GRADIENT
+   ========================================================================== */
+.hero-btn.primary {
+    color: #2D2D2D; 
+    border: 4px solid transparent; 
+    
+    background-image: 
+        linear-gradient(to right, #AAD3F9 0%, #5AAFFF 30%, #AAD3F9 60%, #5AAFFF 100%), 
+        linear-gradient(to right, #9ed2ff 0%, #9ed2ff 100%);
+    background-size: 200% 100%, border-box;
+    background-position: 0% center, center;
+    
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+/* Triggered by JS once the reveal transition finishes */
+.hero-btn.primary.animate-gradient {
+    animation: runGradient 5s ease-in-out 1 forwards;
+}
+
+.hero-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(90, 175, 255, 0.4);
+}
+
+/* ==========================================================================
+   GRADIENT RUNNING ENGINE KEYFRAMES
+   ========================================================================== */
+@keyframes runGradient {
+    0% {
+        background-position: 0% center, center;
+    }
+    50% {
+        background-position: 100% center, center;
+    }
+    100% {
+        background-position: 0% center, center;
+    }
+}
+
+.hero-btn.secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid #FFFFFF;
+}
+
+.hero-btn.secondary:hover {
+    border-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.hero-title {
+    width: 100%;
+    opacity: 0;
+    margin-top: var(--margin-zero);
+    margin-left: var(--margin-zero);
+    margin-right: var(--margin-zero);
+    margin-bottom: var(--margin-hero-title-bottom);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--font-hero-title);
+}
+
+.hero-title-img {
+    width: auto;
+    height: 100%;
+    object-fit: contain; 
+}
+
+@media (max-width: 1600px) {
+    .hero-title {
+        height: clamp(2rem, 8vw, 4.5rem);
+    }
+}
+
+.hero-subtitle {
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-muted);
+    width: 100%;
+    font-size: var(--text-standard);
+    opacity: 0;
+    margin: var(--margin-zero);
+    margin-bottom: var(--margin-hero-title-bottom);
+}
+
+/* ==========================================================================
+   HERO SECTION RISING SUN SPARKLE MECHANICS
+   ========================================================================== */
+.hero-sun-sparkle {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    width: 150vw; 
+    height: auto;
+    object-fit: contain;
+    z-index: -1; 
+    pointer-events: none;
+    mix-blend-mode: screen;
+    
+    animation: heroSparkleEngine 35s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes heroSparkleEngine {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        opacity: 0.05;
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15)) blur(2px);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+        opacity: 0.1;
+        filter: drop-shadow(0 0 40px rgba(90, 175, 255, 0.5)) blur(0px);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+        opacity: 0.05;
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15)) blur(2px);
+    }
+}
+
+.page {
+    width: 100%;
+    height: calc(100vw * 9 / 16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-2 {
+    background: linear-gradient(to bottom, #003362 0%, #FFFFFF 100%);
+    color: var(--text-dark);
+}
+
+.page-3 {
+    background: linear-gradient(to bottom, #FFFFFF 50%, #CBCBCB 100%);
+    color: var(--text-dark);
+}
+
+.page-4 {
+    background: linear-gradient(to bottom, #CBCBCB 0%, #FFFFFF 50%);
+    color: var(--text-dark);
+    height: 30vh;
+}
+
+.topbar-logo-lettermark {
+    opacity: 0;
+}
+
+.page-4 .lettermark-logo {
+    width: 65vw;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.page-5 {
+    background: #FFFFFF;
+    color: var(--text-dark);
+}
+
+.extra {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+}
+
+/* ==========================================================================
+   TABLET CONFIGURATIONS (INTEGRATED BLUE STROBING CORE PROPERTIES)
+   ========================================================================== */
+.tablet-mock {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -40%);
+    width: 85vw;
+    aspect-ratio: 3 / 4;
+    max-height: 500vh;
+    border-radius: 40px;
+    z-index: 10;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: rgba(34, 34, 34, 0.5); 
+    backdrop-filter: blur(10px);        
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px;                      
+    
+    /* INITIAL & INHERENT PROPERTIES: Cyan-blue electric edge baseline */
+    border: 1.5px solid rgba(90, 175, 255, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(90, 175, 255, 0.25),
+                inset 0 0 10px rgba(90, 175, 255, 0.1);
+                
+    /* Infinite strobing loop is active on the element by default */
+    animation: tabletEdgeStrobe 1s ease-in-out infinite alternate;
+}
+
+/* Combines the slide/fade entry timeline cleanly alongside the running edge strobe */
+.tablet-mock.reveal {
+    animation: dramaticTabletFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+               tabletEdgeStrobe 1s ease-in-out infinite alternate;
+}
+
+.tablet-mock.reveal:first-of-type {
+    animation-delay: var(--delay-first-tablet), 0s;
+}
+
+.tablet-mock.reveal:nth-of-type(2) {
+    animation-delay: 0.75s, 0s;
+}
+
+@keyframes tabletEdgeStrobe {
+    0% {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+                    0 0 15px rgba(90, 175, 255, 0.25),
+                    inset 0 0 10px rgba(90, 175, 255, 0.1);
+        border-color: rgba(90, 175, 255, 0.3);
+    }
+    100% {
+        /* Pulses outwards to an ambient high-energy glow aura */
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
+                    0 0 35px rgba(90, 175, 255, 0.65),
+                    inset 0 0 20px rgba(90, 175, 255, 0.25);
+        border-color: rgba(170, 211, 249, 0.85);
+    }
+}
+
+.screen-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    background: var(--bg-tablet-screen);
+    padding: var(--spacing-tablet-screen-padding);
+    gap: var(--gap-tablet-screen-elements);
+}
+
+.tablet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px; 
+}
+
+.comp-toggle-switch {
+    /* Set display to wrap snugly around the overall computed grid content footprint */
+    display: inline-grid;
+    
+    /* Forces equal track sizing based on the largest item */
+    grid-template-columns: repeat(2, 1fr); 
+    
+    /* Forces the inline-grid element to balance perfectly in the center of its parent */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* ADDED: Safety guardrails to prevent content cropping on smaller viewports */
+    max-width: 100%;
+    box-sizing: border-box;
+    
+    background: linear-gradient(to bottom, #D9D9D9 0%, #AAAAAA 100%);
+    border: 5px solid rgba(255, 255, 255, 1);
+    border-radius: var(--pill-border-radius);
+    align-items: center;
+    position: relative;
+    padding: var(--spacing-toggle-padding);
+    gap: var(--gap-toggle-tabs);
+}
+
+.switch-tab {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+    border-radius: var(--pill-border-radius);
+    padding: var(--spacing-btn-padding);
+    white-space: nowrap; 
+    box-sizing: border-box; 
+    width: 100%;
+    
+    /* MODIFIED: Exact typographic blueprint of your hero-subtitle */
+    font-size: var(--text-standard);
+    font-weight: 800;
+    line-height: 1.5;
+    color: #262626;
+}
+
+@media (max-width: 480px) {
+    .switch-tab {
+        /* Scales down the padding slightly on tiny screens so the text has room to breathe */
+        padding: 8px 12px;
+        font-size: calc(var(--text-standard) * 0.8);
+    }
+}
+
+.switch-tab.active {
+    background: linear-gradient(to bottom, #CFCFCF 0%, #A3A3A3 100%);
+    border-radius: var(--pill-border-radius); 
+    border: 5px solid #262626; 
+    box-shadow: none;
+    
+    /* OVERRIDE: Dark color optimization to stay legible against the active tab's light gray gradient background */
+    color: #262626; 
+}
+
+.comp-content-pane {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 28px;
+    box-sizing: border-box;
+    color: var(--text-dark);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    padding: var(--spacing-pane-padding);
+}
+
+.rich-text-content {
+    display: none;
+}
+
+.rich-text-content.active {
+    display: block;
+    animation: fadeInContent 0.4s ease forwards;
+}
+
+.comp-content-pane h2 {
+    color: var(--text-dark);
+    font-weight: 800;
+    font-size: var(--text-rich-h2);
+    margin-top: var(--margin-zero);
+}
+
+.comp-content-pane h3 {
+    font-size: var(--text-rich-h3);
+    margin-bottom: var(--margin-rich-h3-bottom);
+}
+
+.comp-content-pane p {
+    line-height: 1.6;
+    color: #444444;
+    font-size: var(--text-rich-body);
+}
+
+.comp-content-pane strong {
+    color: #000000;
+    font-weight: 700;
+}
+
+.comp-content-pane hr {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-left: var(--margin-zero);
+    margin-right: var(--margin-zero);
+    margin-top: var(--margin-rich-hr-vertical);
+    margin-bottom: var(--margin-rich-hr-vertical);
+}
+
+.comp-content-pane ul {
+    margin: var(--margin-zero);
+    padding-left: var(--list-padding-left);
+}
+
+.comp-content-pane li {
+    line-height: 1.6;
+    color: #555555;
+    font-size: var(--text-rich-body);
+    margin-bottom: var(--margin-rich-li-bottom);
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- DETACHED SCROLL SEPARATION OVERRIDES FOR SECOND TABLET --- */
+.screen-content.tab-layout-fix {
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.tablet-header-sticky {
+    width: max-content;
+    box-sizing: border-box;
+    background: var(--bg-tablet-screen);
+    padding: var(--spacing-tablet-screen-padding) var(--spacing-tablet-screen-padding) 12px;
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.tablet-scroll-body {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 12px var(--spacing-tablet-screen-padding) var(--spacing-tablet-screen-padding);
+}
+
+/* ==========================================================================
+   8. RESPONSIVE BREAKPOINT INTERCEPTORS (FIXES 1324px, 936px, 362px, 318px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .fixed-hero {
+        max-width: 95vw;
+    }
+}
+
+@media (max-width: 940px) {
+    .hero-actions {
+        gap: 12px;
+    }
+    .hero-btn {
+        padding: 10px 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .screen-content {
+        padding: 16px;
+        gap: 16px;
+    }
+    .switch-tab {
+        padding: 10px 15px;
+    }
+    .comp-content-pane {
+        border-radius: 18px;
+        padding: 20px;
+    }
+    .tablet-header-sticky {
+        padding: 16px 16px 8px;
+    }
+    .tablet-scroll-body {
+        padding: 8px 16px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .hero-btn {
+        width: 75%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   SCROLL DOWN INDICATOR STYLES & ANIMATION ENGINE
+   ========================================================================== */
+.scroll-indicator {
+    position: fixed;
+    bottom: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 90;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-text {
+    font-size: var(--text-standard);
+    font-weight: 400;
+    color: var(--text-muted);
+    white-space: nowrap;
+    
+    /* Layered high-contrast drop shadow engine */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),   
+        0 4px 12px rgba(0, 0, 0, 0.6),  
+        0 8px 24px rgba(0, 0, 0, 0.4);  
+}
+
+.scroll-arrow {
+    width: 28px;
+    height: 28px;
+    color: rgba(255, 255, 255, 0.85);
+    
+    /* Boosted filter shadow depth */
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8)) 
+            drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.5));
+    
+    animation: arrowBob 1s ease-in-out infinite;
+}
+
+@keyframes arrowBob {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}

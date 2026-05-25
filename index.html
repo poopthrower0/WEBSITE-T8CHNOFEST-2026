@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T8CHNOFEST</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/t8-favicon.png">
+</head>
+
+<body>
+
+    <nav class="topbar">
+        <a href="#" class="topbar-logo-left">
+            <img src="assets/images/logo-left.svg" alt="Left Logo">
+        </a>
+
+        <div class="topbar-links">
+            <a href="#page-1">Daftar</a>
+            <a href="#page-3">Juknis</a>
+        </div>
+
+        <a href="#" class="topbar-logo-right">
+            <img src="assets/images/logo-right.svg" alt="Right Logo">
+        </a>
+    </nav>
+
+    <div class="fixed-hero" id="fade-text">
+        <img src="assets/images/sparkle.png" alt="Rising Sun Sparkle" class="hero-sun-sparkle">
+
+        <div class="hero-title">
+            <img src="assets/images/Ready for another_.png" alt="Ready for another?" class="hero-title-img">
+        </div>
+        <p class="hero-subtitle">Saatnya tunjukkan lagi semangat yang baru, di Lomba T8CHNOFEST 2026 ini!</p>
+
+        <div class="hero-actions">
+            <a href="#" class="hero-btn primary">Daftar Sekarang</a>
+            <a href="#" class="hero-btn secondary">Lihat Juknis</a>
+        </div>
+    </div>
+
+    <main class="main-wrapper">
+        <div class="tablet-mock">
+            <div class="screen-content">
+                <img src="assets/images/tablet-content.png" alt="Tablet Display" class="tablet-image">
+            </div>
+        </div>
+
+        <section class="page1 page-1"></section>
+        <section class="page page-2"></section>
+        <section class="page page-3"></section>
+    </main>
+
+    <main class="main-wrapper">
+        <div class="tablet-mock">
+            <div class="screen-content tab-layout-fix">
+                
+                <div class="tablet-header-sticky">
+                    <div class="comp-toggle-switch">
+                        <button type="button" class="switch-tab active" id="tab-ml">Mobile Legends</button>
+                        <button type="button" class="switch-tab" id="tab-uiux">UI/UX</button>
+                    </div>
+                </div>
+
+                <div class="tablet-scroll-body">
+                    <div class="comp-content-pane">
+                        <div class="rich-text-content active" id="content-ml">
+                            <h2>🏆 Mobile Legends: Bang Bang Tournament</h2>
+                            <p>Persiapkan tim terbaikmu untuk mendominasi Land of Dawn di <strong>T8CHNOFEST 2026</strong>! Tunjukkan strategi, kekompakan, dan mekanik tingkat tinggi untuk merebut gelar juara.</p>
+                            <hr>
+                            <h3>📌 Ketentuan Umum:</h3>
+                            <ul>
+                                <li>Satu tim terdiri dari 5 pemain inti dan maksimal 1 cadangan.</li>
+                                <li>Sistem turnamen menggunakan mode <em>Draft Pick</em> terbaru.</li>
+                                <li>Seluruh peserta wajib mengikuti regulasi yang tertulis di <strong>Juknis Resmi</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="rich-text-content" id="content-uiux">
+                            <h2>🎨 UI/UX Design Competition</h2>
+                            <p>Tantang kemampuan problem-solving dan kreativitas desaimu dalam merancang solusi digital yang inovatif, fungsional, dan memiliki <em>user experience</em> luar biasa.</p>
+                            <hr>
+                            <h3>📌 Tema & Kriteria:</h3>
+                            <ul>
+                                <li>Desain harus berfokus pada penyelesaian masalah nyata (Real-world Problems).</li>
+                                <li>Output pengumpulan berupa link <strong>Figma Prototype</strong> aktif.</li>
+                                <li>Kriteria penilaian meliputi riset user, estetika visual, dan kegunaan (Usability).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <section class="page1 page-4">
+            <div class="topbar-logo-lettermark">
+                <img src="assets/images/t8-lettemark.png" alt="T8 Logo" class="lettermark-logo">
+            </div>
+        </section>
+
+        <section class="page page-5"></section>
+        <section class="page page-5"></section>
+    </main>
+
+    <!-- <section class="page extra">
+        <h1>Footer / Next Section</h1>
+    </section> -->
+
+    <div class="scroll-indicator" id="scroll-indicator">
+        <span class="scroll-text">Scroll down for more</span>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
