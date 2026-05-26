@@ -7,7 +7,7 @@ window.scrollTo(0, 0);
 const fadeText = document.getElementById('fade-text'); // Points to your .fixed-hero container
 const topbar = document.querySelector('.topbar');
 const page1 = document.querySelector('.page1'); // Matches actual CSS/HTML class '.page1'
-const page4 = document.querySelector('.page-4');
+const page5 = document.querySelector('.page-5'); // CHANGED: Now references the new trigger section
 const scrollIndicator = document.getElementById('scroll-indicator');
 
 // --- REUSABLE SCROLL CALCULATION FUNCTION ---
@@ -46,10 +46,11 @@ function updateScrollDynamics() {
     topbar.style.setProperty('--bg-opacity', topbarProgress * 0.5);
 
     /* --- 3. SCROLL DOWN INDICATOR DISPLAY MAP LOGIC --- */
-    if (page4 && scrollIndicator) {
-        const page4Bounds = page4.getBoundingClientRect();
+    /* CHANGED: Checks bounds against page5 to hide the indicator at the very bottom */
+    if (page5 && scrollIndicator) {
+        const page5Bounds = page5.getBoundingClientRect();
         
-        if (page4Bounds.top <= window.innerHeight) {
+        if (page5Bounds.top <= window.innerHeight) {
             scrollIndicator.style.opacity = '0';
             scrollIndicator.style.transform = 'translate(-50%, 15px)';
         } else {
@@ -66,29 +67,7 @@ window.addEventListener('scroll', updateScrollDynamics);
 updateScrollDynamics();
 
 
-/* --- DYNAMIC COMPETITION SWITCH HANDLER --- */
-const tabMl = document.getElementById('tab-ml');
-const tabUiux = document.getElementById('tab-uiux');
-const contentMl = document.getElementById('content-ml');
-const contentUiux = document.getElementById('content-uiux');
-
-if (tabMl && tabUiux) {
-    tabMl.addEventListener('click', () => {
-        tabUiux.classList.remove('active');
-        tabMl.classList.add('active');
-        contentUiux.classList.remove('active');
-        contentMl.classList.add('active');
-    });
-
-    tabUiux.addEventListener('click', () => {
-        tabMl.classList.remove('active');
-        tabUiux.classList.add('active');
-        contentMl.classList.remove('active');
-        contentUiux.classList.add('active');
-    });
-}
-
-/* --- INTERSECTION OBSERVER FOR SCROLL REVEALS --- */
+/* --- DOM CONTENT READY EVENT WRAPPER --- */
 document.addEventListener("DOMContentLoaded", () => {
     
     // Force the topbar to animate instantly regardless of scroll position
@@ -104,7 +83,56 @@ document.addEventListener("DOMContentLoaded", () => {
         tabletMockups[0].classList.add('reveal');
     }
 
-    // OPTIMIZED: Retained early boundary trigger for the secondary tablet layout
+    /* --- 1. FIXED: DYNAMIC COMPETITION SWITCH HANDLER MOVED HERE --- */
+    const tabMl = document.getElementById('tab-ml');
+    const tabUiux = document.getElementById('tab-uiux');
+    const contentMl = document.getElementById('content-ml');
+    const contentUiux = document.getElementById('content-uiux');
+
+    if (tabMl && tabUiux && contentMl && contentUiux) {
+        // Safe Initialization: Ensure Mobile Legends is active on fresh boot
+        tabMl.classList.add('active');
+        contentMl.classList.add('active');
+        tabUiux.classList.remove('active');
+        contentUiux.classList.remove('active');
+
+        // Click Event Listeners
+        tabMl.addEventListener('click', () => {
+            tabUiux.classList.remove('active');
+            tabMl.classList.add('active');
+            contentUiux.classList.remove('active');
+            contentMl.classList.add('active');
+        });
+
+        tabUiux.addEventListener('click', () => {
+            tabMl.classList.remove('active');
+            tabUiux.classList.add('active');
+            contentMl.classList.remove('active');
+            contentUiux.classList.add('active');
+        });
+    }
+
+    /* --- 2. FIXED NAVBAR SCROLL OFFSET INTERCEPTOR --- */
+    document.querySelectorAll('.topbar-links a[href^="#"], .hero-actions a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const topbarHeight = document.querySelector('.topbar').offsetHeight || 0;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: elementPosition - topbarHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    /* --- 3. INTERSECTION OBSERVER FOR SCROLL REVEALS --- */
     const observerOptions = {
         root: null, 
         rootMargin: "0px 0px 150px 0px", 
@@ -120,11 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    // 1. Queue up standard landing components to track scroll entrance
+    // Queue up standard landing components to track scroll entrance
     const targets = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-actions, .topbar-logo-lettermark');
     targets.forEach(target => scrollObserver.observe(target));
 
-    // 2. Send ONLY the second tablet mockup (index 1) onward into the scroll observer setup
+    // Send ONLY the second tablet mockup (index 1) onward into the scroll observer setup
     if (tabletMockups.length > 1) {
         scrollObserver.observe(tabletMockups[1]);
     }

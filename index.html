@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T8CHNOFEST</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/t8-favicon.png">
 </head>
@@ -17,16 +17,18 @@
 <body>
 
     <nav class="topbar">
-        <a href="#" class="topbar-logo-left">
+        <a href="#hero-section" class="topbar-logo-left">
             <img src="assets/images/logo-left.svg" alt="Left Logo">
         </a>
 
         <div class="topbar-links">
-            <a href="#page-1">Daftar</a>
-            <a href="#page-3">Juknis</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDpKGZdIEwdAEh5SZKZ5dr0pGSS_asEmEpKnQ6QG2i0ovJdw/viewform" target="_blank" rel="noopener noreferrer">Daftar</a>
+
+            <a href="#juknis-section">Juknis</a>
+            <a href="#contacts-section">Contacts</a>
         </div>
 
-        <a href="#" class="topbar-logo-right">
+        <a href="#contacts-section" class="topbar-logo-right">
             <img src="assets/images/logo-right.svg" alt="Right Logo">
         </a>
     </nav>
@@ -40,8 +42,8 @@
         <p class="hero-subtitle">Saatnya tunjukkan lagi semangat yang baru, di Lomba T8CHNOFEST 2026 ini!</p>
 
         <div class="hero-actions">
-            <a href="#" class="hero-btn primary">Daftar Sekarang</a>
-            <a href="#" class="hero-btn secondary">Lihat Juknis</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDpKGZdIEwdAEh5SZKZ5dr0pGSS_asEmEpKnQ6QG2i0ovJdw/viewform" target="_blank" rel="noopener noreferrer" class="hero-btn primary">Daftar Sekarang</a>
+            <a href="#juknis-section" class="hero-btn secondary">Lihat Juknis</a>
         </div>
     </div>
 
@@ -52,15 +54,16 @@
             </div>
         </div>
 
-        <section class="page1 page-1"></section>
+        <section class="page1 page-1" id="hero-section"></section>
         <section class="page page-2"></section>
         <section class="page page-3"></section>
     </main>
 
     <main class="main-wrapper">
         <div class="tablet-mock">
+            <img src="assets/images/t8-lettemark.png" alt="T8 Logo" class="lettermark-logo">
             <div class="screen-content tab-layout-fix">
-                
+
                 <div class="tablet-header-sticky">
                     <div class="comp-toggle-switch">
                         <button type="button" class="switch-tab active" id="tab-ml">Mobile Legends</button>
@@ -70,53 +73,262 @@
 
                 <div class="tablet-scroll-body">
                     <div class="comp-content-pane">
-                        <div class="rich-text-content active" id="content-ml">
-                            <h2>🏆 Mobile Legends: Bang Bang Tournament</h2>
-                            <p>Persiapkan tim terbaikmu untuk mendominasi Land of Dawn di <strong>T8CHNOFEST 2026</strong>! Tunjukkan strategi, kekompakan, dan mekanik tingkat tinggi untuk merebut gelar juara.</p>
-                            <hr>
-                            <h3>📌 Ketentuan Umum:</h3>
-                            <ul>
-                                <li>Satu tim terdiri dari 5 pemain inti dan maksimal 1 cadangan.</li>
-                                <li>Sistem turnamen menggunakan mode <em>Draft Pick</em> terbaru.</li>
-                                <li>Seluruh peserta wajib mengikuti regulasi yang tertulis di <strong>Juknis Resmi</strong>.</li>
-                            </ul>
-                        </div>
+                        <div class="rich-text-content" id="content-ml">
+    <h2>🎮 Mobile Legends: Bang Bang Tournament</h2>
+    <p>Siapkan strategi terbaik, kuasai <em>Land of Dawn</em>, dan buktikan bahwa tim sekolahmu adalah yang terkuat di <strong>T8CHNOFEST 2026</strong>.</p>
+    
+    <hr>
+
+    <h3>👥 Persyaratan & Biaya Tim</h3>
+    <ul>
+        <li><strong>Komposisi Tim:</strong> Setiap tim terdiri dari <strong>5 pemain inti</strong> dan diperbolehkan membawa <strong>1 pemain cadangan</strong>.</li>
+        <li><strong>No Multi-Slot:</strong> Anggota tim yang sudah terdaftar tidak boleh mendaftar di tim lain.</li>
+        <li><strong>Delegasi Sekolah:</strong> Setiap sekolah diperbolehkan mengirimkan lebih dari satu tim.</li>
+        <li><strong>Biaya Pendaftaran:</strong> Setiap tim membayar biaya total <strong>Rp 120.000,00.</strong></li>
+    </ul>
+
+    <h3>🚫 Batasan Pemain (Amatir Only)</h3>
+    <blockquote>
+        <strong>PENTING:</strong> Turnamen ini dikhususkan untuk <strong>Student Amatir</strong>. Pro Player dan Ex Pro Player <strong>TIDAK DIPERKENANKAN</strong> mengikuti kompetisi ini.
+        <br><br>
+        <small>*Catatan: Pro/Ex Pro Player adalah pemain yang pernah berkontrak resmi dengan organisasi esports apa pun dan telah bermain di kompetisi profesional seperti MPL/MDL.</small>
+    </blockquote>
+
+    <hr>
+
+    <h3>⚔️ Ketentuan Umum Pertandingan</h3>
+    <ul>
+        <li><strong>Validasi Akun:</strong> Roster yang bermain <strong>WAJIB</strong> menggunakan akun dengan Game ID yang sama dengan yang terdaftar. Pemain dengan ID berbeda <strong>DILARANG</strong> bertanding.</li>
+        <li><strong>Mode Game:</strong> Draft Pick Mode.</li>
+        <li><strong>Penentuan Pick (Side Selection):</strong> Ditentukan berdasarkan posisi bracket. Tim yang berada di <strong>posisi atas bracket</strong> otomatis mendapatkan <em>First Pick</em>.</li>
+        <li><strong>Sistem Pause:</strong> Setiap tim mendapatkan jatah pause maksimal <strong>2 kali per match</strong>. Pause hanya berlaku jika <strong>tidak ada war/pertempuran</strong> yang sedang berlangsung.</li>
+        <li><strong>Fair Play & Bug:</strong> Seluruh peserta <strong>DILARANG HARD</strong> menggunakan bug apa pun yang merugikan maupun menguntungkan pihak mana pun.</li>
+        <li><strong>Spectator & Observer:</strong> Tidak diperbolehkan ada observer di dalam Custom Room selain pihak panitia. Seluruh pertandingan akan di-spectate langsung oleh panitia.</li>
+        <li><strong>Anti-Cheating:</strong> Penggunaan program ilegal (cheating) dalam bentuk apa pun akan dikenakan hukuman <strong>BAN PERMANEN</strong> (ID, Device, dan hak keikutsertaan).</li>
+    </ul>
+
+    <hr>
+
+    <h3>⏱️ Regulasi Sebelum & Sesudah Pertandingan (Before-After Match)</h3>
+    <ul>
+        <li><strong>Kehadiran Tim:</strong> Setiap peserta dan seluruh tim wajib hadir dan menunggu di ruang tunggu yang telah disediakan. Tim akan dipanggil oleh panitia saat match akan berlangsung.</li>
+        <li><strong>Toleransi Keterlambatan:</strong> Jika ada anggota tim belum hadir pada jadwalnya, match akan dipindahkan ke slot jam berikutnya. Jika setelah diundur tim tetap tidak lengkap/tidak hadir, tim dinyatakan <strong>DIDISKUALIFIKASI / Walk Out (WO)</strong>.</li>
+        <li><strong>Verifikasi Kapten:</strong> Sebelum match dimulai, setiap kapten tim wajib memberikan ID akun dirinya kepada panitia untuk keperluan pembuatan room.</li>
+        <li><strong>Pergantian Pemain:</strong> Hanya diperbolehkan sebelum match dimulai dan hanya diizinkan diganti dengan pemain cadangan/roster yang sudah terdaftar resmi.</li>
+        <li><strong>Suporter:</strong> Peserta diperizinkan dan diperbolehkan membawa suporter ke area pertandingan untuk memberikan dukungan.</li>
+    </ul>
+
+    <hr>
+
+    <h3>🤫 Etika & Aturan In-Game (Taunting & Chat)</h3>
+    <ul>
+        <li><strong>Batasan Taunting:</strong> Setiap peserta hanya diizinkan melakukan taunting (recall/emote) maksimal <strong>3 kali per match</strong>. Jika melanggar, peserta tersebut dilarang bermain di match berikutnya.</li>
+        <li><strong>Sanksi Tim:</strong> Tim yang mendapati <strong>2 anggotanya</strong> melanggar batas aturan taunting ini otomatis akan langsung <strong>DIDISKUALIFIKASI</strong>.</li>
+        <li><strong>Komunikasi Global:</strong> Berlaku aturan <strong>NO RADIO ALL &amp; NO CHAT ALL</strong> selama pertandingan berlangsung.</li>
+        <li><strong>Pelanggaran Umum:</strong> Setiap pelanggaran terhadap format turnamen akan diberikan 1 kali peringatan keras atau langsung didiskualifikasi di tempat.</li>
+    </ul>
+
+    <hr>
+
+    <h3>🏆 Sistem Kompetisi & Bracket</h3>
+    <p>Pengundian bracket dan urutan pertandingan resmi akan dilaksanakan secara transparan pada saat <strong>Technical Meeting</strong>.</p>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px; color: var(--text-dark);">
+        <thead>
+            <tr style="background-color: #003362; color: #FFFFFF; text-align: left;">
+                <th style="padding: 10px; border: 1px solid #DDD;">Babak Turnamen</th>
+                <th style="padding: 10px; border: 1px solid #DDD; text-align: center; width: 150px;">Format Match</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Babak Penyisihan</strong><br><small style="color: #666;">Fase eliminasi awal untuk menyaring tim menuju upper/lower bracket utama.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold; color: #003362;">BO3 (Best of 3)</td>
+            </tr>
+            <tr style="background-color: #F9F9F9;">
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Babak Grand Final</strong><br><small style="color: #666;">Penentuan juara utama tournament Mobile Legends T8CHNOFEST.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold; color: #E67E22;">BO5 (Best of 5)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
                         <div class="rich-text-content" id="content-uiux">
-                            <h2>🎨 UI/UX Design Competition</h2>
-                            <p>Tantang kemampuan problem-solving dan kreativitas desaimu dalam merancang solusi digital yang inovatif, fungsional, dan memiliki <em>user experience</em> luar biasa.</p>
-                            <hr>
-                            <h3>📌 Tema & Kriteria:</h3>
-                            <ul>
-                                <li>Desain harus berfokus pada penyelesaian masalah nyata (Real-world Problems).</li>
-                                <li>Output pengumpulan berupa link <strong>Figma Prototype</strong> aktif.</li>
-                                <li>Kriteria penilaian meliputi riset user, estetika visual, dan kegunaan (Usability).</li>
-                            </ul>
-                        </div>
+    <h2>🎨 UI/UX: Sparking New Innovations, Elevating Existing Experiences</h2>
+    <p>Tantang kemampuan <em>problem-solving</em>, estetika visual, dan kemampuan teknis timmu dalam merancang solusi digital yang nyata, inovatif, dan interaktif di <strong>T8CHNOFEST 2026</strong>.</p>
+    
+    <hr>
+
+    <h3>👥 Persyaratan Peserta</h3>
+    <ul>
+        <li>Lomba bersifat tim yang terdiri dari <strong>1–4 orang</strong>.</li>
+        <li>Setiap tim hanya diperkenankan mengirim maksimal <strong>1 karya</strong>.</li>
+        <li>Setiap tim membayar biaya total <strong>Rp 60.000,00.</strong></li>
+    </ul>
+
+    <h3>📌 Ketentuan Umum</h3>
+    <ul>
+        <li>Peserta wajib mengusung karya dengan Tema: <strong>"Sparking New Innovations, Elevating Existing Experiences"</strong>.</li>
+        <li><strong>Kebebasan Objek:</strong> Peserta bebas menentukan objek karya (tidak terbatas pada desain aplikasi mobile, desain Operating System seperti Windows/macOS/Linux, antarmuka Game, hingga desain ulang website instansi pemerintah).</li>
+        <li><strong>Output Akhir:</strong> Berupa <strong>Website Prototype</strong> yang wajib diimplementasikan dalam bentuk Website sebagai prototipe interaktif.</li>
+        <li><strong>Software Desain:</strong> Bebas menggunakan perangkat lunak apa pun (Figma, Adobe XD, Sketch, Framer, dll).</li>
+        <li>Karya harus merupakan ide orisinal, bebas SARA, tidak melanggar norma, dan belum pernah memenangkan penghargaan di kompetisi lain.</li>
+        <li>Hak cipta karya tetap menjadi milik peserta sepenuhnya.</li>
+        <li>Hasil penilaian dewan juri bersifat mutlak dan tidak dapat diganggu gugat.</li>
+    </ul>
+
+    <hr>
+
+    <h3>📄 Ketentuan Proposal</h3>
+    <p>Proposal wajib disusun secara sistematis dengan memuat poin-poin berikut:</p>
+    <ul>
+        <li><strong>Judul Karya</strong> &amp; <strong>Abstrak:</strong> Ringkasan singkat mengenai masalah utama dan solusi (maksimal 250 kata).</li>
+        <li><strong>Identifikasi Masalah &amp; Latar Belakang:</strong> Wajib mengangkat masalah nyata yang diperkuat dengan bukti gambar/data. Sumber masalah bisa dari jurnal, Steam Reviews, keluhan media sosial, atau pemberitaan media terkait buruknya interface sistem/instansi.</li>
+        <li><strong>Tujuan Desain:</strong> Menyebutkan perbaikan spesifik yang ingin dicapai.</li>
+        <li><strong>Analisis SWOT:</strong> Membandingkan kondisi/desain lama dengan desain yang diajukan dalam bentuk <strong>format tabel</strong> (Strengths, Weaknesses, Opportunities, Threats).</li>
+        <li><strong>Target Pengguna:</strong> Menentukan siapa pengguna utama produk dan alasannya.</li>
+        <li><strong>Metode Desain:</strong> Mencakup keseluruhan <em>timeline</em> kerja dari pengumpulan informasi hingga pengerjaan Website Prototype.</li>
+        <li><strong>Skenario Penggunaan:</strong> Menggambarkan alur pengalaman pengguna (User Experience) dari awal hingga akhir interaksi.</li>
+        <li><strong>Penutup:</strong> 
+            <ul>
+                <li><em>Kesimpulan:</em> Ringkasan bagaimana desain menjawab masalah awal.</li>
+                <li><em>Saran:</em> Rekomendasi masa depan (Pengembangan Fitur yang belum sempat dibuat, Riset Lanjutan/Uji Usia, dan Aspek Teknis bagi developer).</li>
+            </ul>
+        </li>
+        <li><strong>Lampiran:</strong> Link desain yang dapat diakses, Link Prototype (opsional), dan Daftar Pustaka (minimal dari 5 tahun terakhir).</li>
+    </ul>
+
+    <hr>
+
+    <h3>💻 Ketentuan Prototype</h3>
+    <ul>
+        <li>Bentuk akhir prototipe yang dibuat wajib merupakan sebuah <strong>Website</strong>.</li>
+        <li><strong>Teknik Coding:</strong> Bebas dan diperbolehkan menggunakan metode <em>vibe-coding</em> (AI/tools bantuan koding), namun <strong>DILARANG HARD</strong> menggunakan sistem <em>drag and drop</em> (seperti Wix, Canva, atau sejenisnya).</li>
+        <li>Website harus memiliki alur yang dapat disimulasikan (<em>clickable prototype</em>) senyata mungkin.</li>
+        <li>Penggunaan hosting bersifat <strong>opsional</strong> dan tidak memengaruhi nilai.</li>
+        <li>Website prototype wajib dikumpulkan dalam bentuk file terkompresi <strong>(.zip)</strong> melalui formulir registrasi.</li>
+    </ul>
+
+    <hr>
+
+    <h3>📊 Ketentuan Presentasi (Babak Final)</h3>
+    <ul>
+        <li>Media paparan utama wajib berbentuk file slides dalam format <strong>PDF (.pdf)</strong>.</li>
+        <li>Isi presentasi wajib memuat: Identifikasi masalah, tujuan, perbandingan, target pengguna, dan analisis SWOT.</li>
+        <li>Peserta wajib menyediakan Website Prototype yang siap diakses dan diuji langsung oleh dewan juri saat presentasi.</li>
+    </ul>
+
+    <hr>
+
+    <h3>⚔️ Sistem Kompetisi</h3>
+    
+    <h4>1. Babak Penyisihan (Fokus Perencanaan &amp; Dokumentasi)</h4>
+    <p>Peserta wajib mengumpulkan berkas berikut melalui formulir registrasi:</p>
+    <ul>
+        <li><strong>Proposal:</strong> Minimal 10 halaman (Format .pdf).</li>
+        <li><strong>Desain UI:</strong> Gambaran visual awal (Format .png/.jpg/.jpeg) yang disisipkan di dalam proposal dan form registrasi.</li>
+        <li><strong>Berkas Administrasi:</strong> Identitas asli anggota tim (KTM/Kartu Pelajar).</li>
+    </ul>
+
+    <h4>2. Babak Final (Fokus Eksekusi &amp; Paparan)</h4>
+    <ul>
+        <li>Sebanyak <strong>6 tim</strong> yang lolos akan melaju ke babak final yang diadakan secara <strong>luring (offline) di SMAN 8 Jakarta</strong>.</li>
+        <li><strong>Technical Meeting:</strong> Diadakan daring via Zoom/Google Meet pada <strong>19 Juli 2026</strong>.</li>
+        <li><strong>Batas Pengumpulan Akhir:</strong> Pengumpulan Website Prototype (.zip &amp; link) serta file presentasi (.pdf) paling lambat <strong>1 Agustus 2026 23:59</strong>.</li>
+        <li><strong>Aturan Waktu Presentasi:</strong> Total waktu adalah <strong>20 menit</strong> (10 menit presentasi bersih, 10 menit tanya jawab). Kelebihan waktu akan langsung dipotong oleh panitia.</li>
+        <li>Urutan tampil akan diacak pada hari H. Jika dipanggil 3 kali tidak merespons, tim dinyatakan <strong>didiskualifikasi</strong>.</li>
+    </ul>
+
+    <hr>
+
+    <h3>📝 Kriteria Penilaian</h3>
+    <p>Penilaian dilakukan secara transparan oleh dewan juri berdasarkan bobot berikut:</p>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px; color: var(--text-dark);">
+        <thead>
+            <tr style="background-color: #003362; color: #FFFFFF; text-align: left;">
+                <th style="padding: 10px; border: 1px solid #DDD;">Kriteria Penilaian</th>
+                <th style="padding: 10px; border: 1px solid #DDD; text-align: center; width: 80px;">Bobot</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Identifikasi Masalah</strong><br><small style="color: #666;">Realistis, relevan, dan memiliki urgensi tinggi untuk diselesaikan.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">15%</td>
+            </tr>
+            <tr style="background-color: #F9F9F9;">
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Solusi &amp; Relevansi UX</strong><br><small style="color: #666;">Kesesuaian solusi dengan masalah serta efektivitas peningkatan User Experience.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">20%</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>User Friendliness (Usability)</strong><br><small style="color: #666;">Kemudahan navigasi, kenyamanan interaksi, accessibility, dan kejelasan alur.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">20%</td>
+            </tr>
+            <tr style="background-color: #F9F9F9;">
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Visual Design</strong><br><small style="color: #666;">Konsistensi, pemilihan warna, tipografi, layout, hierarki, dan estetika visual.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">15%</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Kreativitas &amp; Inovasi</strong><br><small style="color: #666;">Keunikan ide, orisinalitas konsep, dan kebaruan solusi yang ditawarkan.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">15%</td>
+            </tr>
+            <tr style="background-color: #F9F9F9;">
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Prototype &amp; Interaktivitas</strong><br><small style="color: #666;">Kualitas simulasi website prototype (clickable) agar terasa nyata dan fungsional.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">10%</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #DDD;"><strong>Presentasi &amp; Penguasaan Materi</strong><br><small style="color: #666;">Penyampaian ide, argumentasi proses desain, dan ketepatan menjawab pertanyaan juri.</small></td>
+                <td style="padding: 10px; border: 1px solid #DDD; text-align: center; font-weight: bold;">5%</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <section class="page1 page-4">
-            <div class="topbar-logo-lettermark">
-                <img src="assets/images/t8-lettemark.png" alt="T8 Logo" class="lettermark-logo">
-            </div>
-        </section>
 
+
+        <section class="page page-5" id="juknis-section"></section>
         <section class="page page-5"></section>
-        <section class="page page-5"></section>
+        <section class="page page-6"></section>
     </main>
 
     <!-- <section class="page extra">
         <h1>Footer / Next Section</h1>
     </section> -->
 
+    <section class="page-contacts" id="contacts-section">
+        <div class="contacts-container">
+
+            <div class="branding-block">
+                <img class="branding-logo" src="assets/images/logo-right.svg" alt="Right Logo">
+                <div class="branding-text">
+                    <span class="brand-sub">Presented to you by</span>
+                    <h3 class="brand-main">Ekstrakurikuler Teknologi & Soundsystem</h3>
+                </div>
+            </div>
+
+            <div class="whatsapp-block">
+                <p class="whatsapp-title">Contact us through WhatsApp:</p>
+                <div class="contacts-grid">
+                    <a href="https://wa.me/yourtext" class="hero-btn primary animate-gradient">Brian (Umum 1)</a>
+                    <a href="https://wa.me/yourtext" class="hero-btn primary animate-gradient">Ghaniy (Umum 2)</a>
+                    <a href="https://wa.me/yourtext" class="hero-btn primary animate-gradient">Raja (Mobile Legends)</a>
+                    <a href="https://wa.me/yourtext" class="hero-btn primary animate-gradient">Qaisar (UI/UX)</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <div class="scroll-indicator" id="scroll-indicator">
         <span class="scroll-text">Scroll down for more</span>
         <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
         </svg>
     </div>
 

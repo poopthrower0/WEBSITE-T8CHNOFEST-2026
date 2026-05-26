@@ -64,6 +64,10 @@
     --glass-stroke-emulation: drop-shadow(0px -1px 0px rgba(255, 255, 255, 0.6)) drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.25)) drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.55));
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body,
 html {
     margin: var(--margin-zero);
@@ -251,7 +255,6 @@ html {
     background-clip: padding-box, border-box;
 }
 
-/* Triggered by JS once the reveal transition finishes */
 .hero-btn.primary.animate-gradient {
     animation: runGradient 5s ease-in-out 1 forwards;
 }
@@ -374,30 +377,57 @@ html {
 }
 
 .page-3 {
-    background: linear-gradient(to bottom, #FFFFFF 50%, #CBCBCB 100%);
+    background: linear-gradient(to bottom, #FFFFFF 50%, #ffffff 100%);
     color: var(--text-dark);
-}
-
-.page-4 {
-    background: linear-gradient(to bottom, #CBCBCB 0%, #FFFFFF 50%);
-    color: var(--text-dark);
-    height: 30vh;
 }
 
 .topbar-logo-lettermark {
     opacity: 0;
 }
 
-.page-4 .lettermark-logo {
-    width: 65vw;
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
 .page-5 {
     background: #FFFFFF;
+    color: var(--text-dark);
+}
+
+@media (max-width: 3000px) {
+    .page-5 {
+        height: 10vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .page-5 {
+        height: 30vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .page-5 {
+        height: 30vw;
+    }
+}
+
+@media (max-width: 549px) {
+    .page-5 {
+        height: 70vw;
+    }
+}
+
+@media (max-width: 387px) {
+    .page-5 {
+        height: 90vw;
+    }
+}
+
+@media (max-width: 331px) {
+    .page-5 {
+        height: 150vw;
+    }
+}   
+
+.page-6 {
+    background: linear-gradient(to bottom, #FFFFFF 50%, #CBCBCB 100%);
     color: var(--text-dark);
 }
 
@@ -410,7 +440,7 @@ html {
 }
 
 /* ==========================================================================
-   TABLET CONFIGURATIONS (INTEGRATED BLUE STROBING CORE PROPERTIES)
+   FIRST TABLET CONFIGURATIONS (CONSTRAINED UNDER 3:4 RATIO)
    ========================================================================== */
 .tablet-mock {
     position: absolute;
@@ -419,7 +449,7 @@ html {
     opacity: 0;
     transform: translate(-50%, -40%);
     width: 85vw;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 3 / 4; /* Keeps Tablet 1 strictly constrained */
     max-height: 500vh;
     border-radius: 40px;
     z-index: 10;
@@ -430,17 +460,14 @@ html {
     -webkit-backdrop-filter: blur(10px);
     padding: 12px;                      
     
-    /* INITIAL & INHERENT PROPERTIES: Cyan-blue electric edge baseline */
     border: 1.5px solid rgba(90, 175, 255, 0.4);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
                 0 0 15px rgba(90, 175, 255, 0.25),
                 inset 0 0 10px rgba(90, 175, 255, 0.1);
                 
-    /* Infinite strobing loop is active on the element by default */
     animation: tabletEdgeStrobe 1s ease-in-out infinite alternate;
 }
 
-/* Combines the slide/fade entry timeline cleanly alongside the running edge strobe */
 .tablet-mock.reveal {
     animation: dramaticTabletFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards,
                tabletEdgeStrobe 1s ease-in-out infinite alternate;
@@ -454,6 +481,90 @@ html {
     animation-delay: 0.75s, 0s;
 }
 
+/* ==========================================================================
+   SECOND TABLET OVERRIDES (OVERFLOW VISIBLE TO ALLOW FLOATING LOGO)
+   ========================================================================== */
+.tablet-mock:has(.tab-layout-fix) {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 85vw;
+    /* Menggunakan aspect-ratio atau max-height agar seragam dengan tablet pertama */
+    aspect-ratio: 3 / 4; 
+    max-height: 80vh; /* Membatasi tinggi maksimal agar tidak over-scroll melewati viewport */
+    border-radius: 40px;
+    z-index: 10;
+    
+    /* TETAP VISIBLE: Supaya logo di atas tidak terpotong */
+    overflow: visible; 
+    
+    box-sizing: border-box;
+    background: rgba(34, 34, 34, 0.5); 
+    backdrop-filter: blur(10px);        
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px;                      
+    border: 1.5px solid rgba(90, 175, 255, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(90, 175, 255, 0.25),
+                inset 0 0 10px rgba(90, 175, 255, 0.1);
+}
+
+/* --- DETACHED SCROLL SEPARATION OVERRIDES FOR SECOND TABLET --- */
+.screen-content.tab-layout-fix {
+    width: 100%;
+    height: 100%; /* Memaksa isi layar mengikuti tinggi penuh dari mock tablet */
+    overflow-y: hidden; /* Mencegah double scrollbar pada kontainer utama */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start;
+    padding: 0;
+}
+
+/* Pastikan bagian body teks di bawah toggle-switch yang melakukan scrolling */
+.tablet-scroll-body {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto; /* Mengaktifkan scrollpage internal di dalam tablet */
+    box-sizing: border-box;
+    padding: 12px var(--spacing-tablet-screen-padding) var(--spacing-tablet-screen-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* ==========================================================================
+   FLOATING LETTERMARK LOGO (INSIDE TABLET, APPEARING IN PAGE 3)
+   ========================================================================== */
+.tablet-mock .lettermark-logo {
+    /* Detached from flow: does not affect tablet height */
+    position: absolute;
+    
+    /* Positioned exactly above the top edge of the tablet mockup */
+    bottom: 100%; 
+    margin-bottom: 50px; /* Gap between logo and tablet frame */
+    
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 65vw;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    z-index: 9; /* Ensure it stays above everything */
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media (max-width: 768px) {
+    .tablet-mock .lettermark-logo {
+        width: 80vw;
+        margin-bottom: 30px;
+    }
+}
+
 @keyframes tabletEdgeStrobe {
     0% {
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
@@ -462,7 +573,6 @@ html {
         border-color: rgba(90, 175, 255, 0.3);
     }
     100% {
-        /* Pulses outwards to an ambient high-energy glow aura */
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
                     0 0 35px rgba(90, 175, 255, 0.65),
                     inset 0 0 20px rgba(90, 175, 255, 0.25);
@@ -477,7 +587,11 @@ html {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
+    /* MODIFIED: Re-centered elements alignment explicitly across viewports */
+    align-items: center; 
+    justify-content: center;
+    
     overflow-y: auto;
     background: var(--bg-tablet-screen);
     padding: var(--spacing-tablet-screen-padding);
@@ -490,20 +604,18 @@ html {
     object-fit: cover;
     object-position: center;
     border-radius: 20px; 
+    margin: 0 auto; /* Forces image centration inside the container flexbox */
 }
 
+/* ==========================================================================
+   DYNAMIC SEGMENTED TOGGLE COMPONENT STYLE BLOCK
+   ========================================================================== */
 .comp-toggle-switch {
-    /* Set display to wrap snugly around the overall computed grid content footprint */
     display: inline-grid;
-    
-    /* Forces equal track sizing based on the largest item */
     grid-template-columns: repeat(2, 1fr); 
-    
-    /* Forces the inline-grid element to balance perfectly in the center of its parent */
     margin-left: auto;
     margin-right: auto;
     
-    /* ADDED: Safety guardrails to prevent content cropping on smaller viewports */
     max-width: 100%;
     box-sizing: border-box;
     
@@ -528,19 +640,10 @@ html {
     box-sizing: border-box; 
     width: 100%;
     
-    /* MODIFIED: Exact typographic blueprint of your hero-subtitle */
     font-size: var(--text-standard);
     font-weight: 800;
     line-height: 1.5;
     color: #262626;
-}
-
-@media (max-width: 480px) {
-    .switch-tab {
-        /* Scales down the padding slightly on tiny screens so the text has room to breathe */
-        padding: 8px 12px;
-        font-size: calc(var(--text-standard) * 0.8);
-    }
 }
 
 .switch-tab.active {
@@ -548,8 +651,6 @@ html {
     border-radius: var(--pill-border-radius); 
     border: 5px solid #262626; 
     box-shadow: none;
-    
-    /* OVERRIDE: Dark color optimization to stay legible against the active tab's light gray gradient background */
     color: #262626; 
 }
 
@@ -634,16 +735,20 @@ html {
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
+    align-items: center;  /* MODIFIED: Centers the sticky layout modules horizontally */
+    justify-content: flex-start;
     padding: 0;
 }
 
 .tablet-header-sticky {
-    width: max-content;
+    width: 100%;
     box-sizing: border-box;
     background: var(--bg-tablet-screen);
     padding: var(--spacing-tablet-screen-padding) var(--spacing-tablet-screen-padding) 12px;
     z-index: 5;
     flex-shrink: 0;
+    display: flex;
+    justify-content: center; /* MODIFIED: Forces switch-tab block to stay perfectly centered */
 }
 
 .tablet-scroll-body {
@@ -652,6 +757,9 @@ html {
     overflow-y: auto;
     box-sizing: border-box;
     padding: 12px var(--spacing-tablet-screen-padding) var(--spacing-tablet-screen-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* MODIFIED: Ensures panel layout aligns squarely in the middle */
 }
 
 /* ==========================================================================
@@ -672,13 +780,26 @@ html {
     }
 }
 
+@media (max-width: 768px) {
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .hero-btn {
+        width: 75%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
 @media (max-width: 480px) {
     .screen-content {
         padding: 16px;
         gap: 16px;
     }
     .switch-tab {
-        padding: 10px 15px;
+        padding: 8px 12px;
+        font-size: calc(var(--text-standard) * 0.8);
     }
     .comp-content-pane {
         border-radius: 18px;
@@ -689,18 +810,6 @@ html {
     }
     .tablet-scroll-body {
         padding: 8px 16px 16px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-    }
-    .hero-btn {
-        width: 75%;
-        box-sizing: border-box;
-        text-align: center;
     }
 }
 
@@ -726,8 +835,6 @@ html {
     font-weight: 400;
     color: var(--text-muted);
     white-space: nowrap;
-    
-    /* Layered high-contrast drop shadow engine */
     text-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.8),   
         0 4px 12px rgba(0, 0, 0, 0.6),  
@@ -738,11 +845,8 @@ html {
     width: 28px;
     height: 28px;
     color: rgba(255, 255, 255, 0.85);
-    
-    /* Boosted filter shadow depth */
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8)) 
             drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.5));
-    
     animation: arrowBob 1s ease-in-out infinite;
 }
 
@@ -754,3 +858,124 @@ html {
         transform: translateY(8px);
     }
 }
+
+/* ==========================================================================
+   CONTACTS SECTION STYLES (UNIFORM MAX-WIDTH ENGINE)
+   ========================================================================== */
+.page-contacts {
+    width: 100%;
+    min-height: max-content;
+    background: linear-gradient(to bottom, #ffffff 100% 50%, #ffffff 100%);
+    box-sizing: border-box;
+    padding: clamp(60px, 8vw, 120px) 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 32px;
+}
+
+/* Top Branding Presentation Cluster */
+.branding-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.branding-logo {
+    width: 50px;
+    max-width: 20%;
+    height: auto;
+    object-fit: contain;
+}
+
+.branding-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-sub {
+    font-size: var(--text-standard);
+    color: #555555;
+    font-weight: 500;
+}
+
+.brand-main {
+    font-size: var(--text-standard);
+    font-weight: 800;
+    color: #0C0C0C;
+    margin: 0;
+}
+
+/* WhatsApp Block Layout Engine */
+.whatsapp-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whatsapp-title {
+    font-size: var(--text-standard);
+    color: #444444;
+    font-weight: 500;
+    margin: 0 0 24px 0;
+}
+
+/* GRID CONFIGURATION (The Left Image Blueprint - Uniform Sizing Engine):
+   Uses inline-grid so the container naturally inherits the width of the 
+   longest button title, while "1fr 1fr" forces all cells to match that size.
+*/
+.contacts-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.contacts-grid .hero-btn {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   NARROW DEVICE BREAKPOINTS (The Right Image Blueprint)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .branding-block {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    /* Break out of the inline sizing engine to stretch across the viewport wrapper */
+    .contacts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    /* Collapse down safely to a single unified vertical strip on tiny devices */
+    .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}   
