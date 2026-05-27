@@ -126,6 +126,21 @@ html {
     display: block;
 }
 
+/* ==========================================================================
+   TOPBAR MOBILE COMPACT OVERRIDES (FOR DEVICES <= 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+    /* Sembunyikan navigasi teks tengah */
+    .topbar .topbar-links {
+        display: none !important;
+    }
+
+    /* Sembunyikan logo sebelah kanan */
+    .topbar .topbar-logo-right {
+        display: none !important;
+    }
+}
+
 .fixed-background-text {
     position: fixed;
     top: 50%;
@@ -174,7 +189,7 @@ html {
 
 .fixed-hero {
     position: fixed;
-    top: 0;
+    top: 1%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -448,8 +463,8 @@ html {
     left: 50%;
     opacity: 0;
     transform: translate(-50%, -40%);
-    width: 85vw;
-    aspect-ratio: 3 / 4; /* Keeps Tablet 1 strictly constrained */
+    width: 95vw;
+    
     max-height: 500vh;
     border-radius: 40px;
     z-index: 10;
@@ -488,10 +503,11 @@ html {
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 85vw;
+    width: 100vw;
+    
     /* Menggunakan aspect-ratio atau max-height agar seragam dengan tablet pertama */
     aspect-ratio: 3 / 4; 
-    max-height: 80vh; /* Membatasi tinggi maksimal agar tidak over-scroll melewati viewport */
+    max-height: 100vh; /* Membatasi tinggi maksimal agar tidak over-scroll melewati viewport */
     border-radius: 40px;
     z-index: 10;
     
@@ -507,6 +523,16 @@ html {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
                 0 0 15px rgba(90, 175, 255, 0.25),
                 inset 0 0 10px rgba(90, 175, 255, 0.1);
+}   
+
+@media (max-width: 400px) {
+    .tablet-mock:has(.tab-layout-fix) {
+        width: 110vw;
+        left: 45%;
+    }
+    .tablet-mock:has(.tab-layout-fix) .lettermark-logo {
+        left: 55%;
+    }
 }
 
 /* --- DETACHED SCROLL SEPARATION OVERRIDES FOR SECOND TABLET --- */
@@ -639,6 +665,7 @@ html {
     white-space: nowrap; 
     box-sizing: border-box; 
     width: 100%;
+    height: 100%;
     
     font-size: var(--text-standard);
     font-weight: 800;
@@ -818,7 +845,7 @@ html {
    ========================================================================== */
 .scroll-indicator {
     position: fixed;
-    bottom: 30vh;
+    bottom: 55vh;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -830,13 +857,43 @@ html {
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (max-width: 2500px) {
+    .scroll-indicator {
+        bottom: 20vh;
+    }   
+}
+
+@media (max-width: 1368px) {
+    .scroll-indicator {
+        bottom: 55vh;
+    }
+}
+
+@media (max-width: 987px) {
+    .scroll-indicator {
+        bottom: 60vh;
+    }
+}
+
+@media (max-width: 764px) {
+    .scroll-indicator {
+        bottom: 55vh;
+    }
+}
+
+@media (max-width: 388px) {
+    .scroll-indicator {
+        bottom: 15vh;
+    }
+}
+
 .scroll-text {
     font-size: var(--text-standard);
     font-weight: 400;
     color: var(--text-muted);
     white-space: nowrap;
     text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.8),   
+        0 1px 0px rgba(0, 0, 0, 1),   
         0 4px 12px rgba(0, 0, 0, 0.6),  
         0 8px 24px rgba(0, 0, 0, 0.4);  
 }
@@ -844,9 +901,9 @@ html {
 .scroll-arrow {
     width: 28px;
     height: 28px;
-    color: rgba(255, 255, 255, 0.85);
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8)) 
-            drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.5));
+    color: rgba(255, 255, 255, 1);
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 1)) 
+            drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.5));
     animation: arrowBob 1s ease-in-out infinite;
 }
 
@@ -865,14 +922,21 @@ html {
 .page-contacts {
     width: 100%;
     min-height: max-content;
-    background: linear-gradient(to bottom, #ffffff 100% 50%, #ffffff 100%);
+    
+    /* MODIFIED: Menggunakan RGBA untuk mengatur tingkat transparansi gradasi */
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, .9) 50%,   /* Atas: Sangat transparan (5% opasitas) */
+        rgba(255, 255, 255, 1) 100%  /* Bawah: Translucent / Semi-transparan (65% opasitas) */
+    );
+    
     box-sizing: border-box;
     padding: clamp(60px, 8vw, 120px) 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 20;
+    z-index: 50;
 }
 
 .contacts-container {
