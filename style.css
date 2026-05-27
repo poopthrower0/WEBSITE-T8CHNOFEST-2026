@@ -503,7 +503,7 @@ html {
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 100vw;
+    width: 99vw;
     
     /* Menggunakan aspect-ratio atau max-height agar seragam dengan tablet pertama */
     aspect-ratio: 3 / 4; 
@@ -524,16 +524,6 @@ html {
                 0 0 15px rgba(90, 175, 255, 0.25),
                 inset 0 0 10px rgba(90, 175, 255, 0.1);
 }   
-
-@media (max-width: 400px) {
-    .tablet-mock:has(.tab-layout-fix) {
-        width: 110vw;
-        left: 45%;
-    }
-    .tablet-mock:has(.tab-layout-fix) .lettermark-logo {
-        left: 55%;
-    }
-}
 
 /* --- DETACHED SCROLL SEPARATION OVERRIDES FOR SECOND TABLET --- */
 .screen-content.tab-layout-fix {
