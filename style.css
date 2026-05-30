@@ -13,9 +13,10 @@
        ========================================================================== */
     --font-hero-title: clamp(8rem, 14vw, 12rem);
     --text-standard: clamp(1.1rem, 1.8vw, 1.35rem);
-    --text-rich-h2: clamp(1.4rem, 2.5vw, 2.2rem);
-    --text-rich-h3: clamp(1.1rem, 1.8vw, 1.4rem);   
-    --text-rich-body: clamp(0.95rem, 1.3vw, 1.1rem);
+    --text-standard-topbar: clamp(0.9rem, 1.5vw, 1rem);
+    --text-rich-h2: clamp(1.2rem, 2.3vw, 2.0rem);
+    --text-rich-h3: clamp(.9rem, 1.6vw, 1.2rem);   
+    --text-rich-body: clamp(0.75rem, 1.1vw, .9rem);
 
     /* ==========================================================================
        3. UNIFIED STYLE TOKENS
@@ -112,7 +113,8 @@ html {
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
-    font-size: var(--text-standard);
+    font-size: var(--text-standard-topbar);
+    opacity: .7;
 }
 
 .topbar a:hover {
