@@ -461,7 +461,7 @@ html {
    ========================================================================== */
 .tablet-mock {
     position: absolute;
-    top: 55%;
+    top: 60%;
     left: 50%;
     opacity: 0;
     transform: translate(-50%, -40%);
@@ -505,7 +505,7 @@ html {
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 99vw;
+    width: 70vw;
     
     /* Menggunakan aspect-ratio atau max-height agar seragam dengan tablet pertama */
     aspect-ratio: 3 / 4; 
@@ -526,6 +526,12 @@ html {
                 0 0 15px rgba(90, 175, 255, 0.25),
                 inset 0 0 10px rgba(90, 175, 255, 0.1);
 }   
+
+@media (max-width: 900px) {
+    .tablet-mock:has(.tab-layout-fix) {
+        width: 95vw;
+    }
+}
 
 /* --- DETACHED SCROLL SEPARATION OVERRIDES FOR SECOND TABLET --- */
 .screen-content.tab-layout-fix {
@@ -698,11 +704,13 @@ html {
     font-weight: 800;
     font-size: var(--text-rich-h2);
     margin-top: var(--margin-zero);
+    text-align: center;
 }
 
 .comp-content-pane h3 {
     font-size: var(--text-rich-h3);
     margin-bottom: var(--margin-rich-h3-bottom);
+    text-align: center;
 }
 
 .comp-content-pane p {
@@ -736,6 +744,24 @@ html {
     color: #555555;
     font-size: var(--text-rich-body);
     margin-bottom: var(--margin-rich-li-bottom);
+}
+
+/* Styling untuk container pembungkus gambar (jika diperlukan untuk memastikan centering) */
+.uiux-hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Styling untuk gambar prototype-choice-img */
+.prototype-choice-img {
+    display: block;
+    margin: 0 auto;         /* Memastikan elemen berada di tengah secara horizontal */
+    max-width: 100%;        /* Mencegah gambar meluap dari parent-nya */
+    width: 100vh;            /* Mengadaptasi lebar gambar berdasarkan satuan vh parent (ganti angka 50 sesuai kebutuhan desain Anda) */
+    height: auto;           /* Membuat tinggi gambar otomatis menyesuaikan secara proporsional terhadap lebar */
+    object-fit: contain;    /* Menjaga proporsi gambar agar tidak terdistorsi */
 }
 
 @keyframes fadeInContent {

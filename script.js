@@ -152,8 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const targets = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-actions, .topbar-logo-lettermark');
     targets.forEach(target => scrollObserver.observe(target));
 
-    // Send ONLY the second tablet mockup (index 1) onward into the scroll observer setup
-    if (tabletMockups.length > 1) {
-        scrollObserver.observe(tabletMockups[1]);
+    /* --- YANG DIUBAH: DAFTARKAN SEMUA TABLET SISA KE OBSERVER --- */
+    // Melakukan perulangan mulai dari indeks ke-1 (Tablet ke-2, ke-3, dst.) agar semuanya otomatis memicu class .reveal saat di-scroll
+    for (let i = 1; i < tabletMockups.length; i++) {
+        scrollObserver.observe(tabletMockups[i]);
     }
 });
